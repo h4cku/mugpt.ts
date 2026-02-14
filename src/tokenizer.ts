@@ -9,4 +9,12 @@ export class Tokenizer {
     this.vocabSize = this.idx2char.length + 1;
     console.log("vocab size:", this.vocabSize);
   }
+
+  decode(idx: number): string {
+    return this.idx2char[idx]!;
+  }
+
+  encode(token: string): number {
+    return this.idx2char.indexOf(token);
+  }
 }

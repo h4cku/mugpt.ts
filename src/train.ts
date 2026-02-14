@@ -16,7 +16,7 @@ export function train(
     const doc = docs[step % docs.length];
     const tokens = [
       tok.BOS,
-      ...Array.from(doc!).map((c) => tok.idx2char.indexOf(c)),
+      ...Array.from(doc!).map((c) => tok.encode(c)),
       tok.BOS,
     ];
     const n = Math.min(model.config.block_size, tokens.length - 1);
@@ -57,7 +57,7 @@ export function infere(model: GPT, tok: Tokenizer) {
 
       if (idx === tok.BOS) break;
 
-      sample += tok.idx2char[idx];
+      sample += tok.decode(idx);
       tokenId = idx;
     }
 
