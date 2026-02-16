@@ -9,6 +9,7 @@
     "typescript": "^5"
   },
   "scripts": {
+    "build": "bun build ./main.ts",
     "train": "bun run ./main.ts gpt train",
     "infere": "bun run ./main.ts gpt infere"
   }
