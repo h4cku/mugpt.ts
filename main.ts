@@ -19,22 +19,20 @@ let tok = new Tokenizer(docs);
 
 let model = undefined;
 
-if (Bun.argv[2] == "gpt"){
+if (Bun.argv[2] == "gpt") {
   let gptConfig = new GPTConfig();
   model = new GPT(gptConfig, tok);
-}
-else if(Bun.argv[2] == "llama"){
+} else if (Bun.argv[2] == "llama") {
   let llamaConfig = new LlamaConfig();
   model = new Llama(llamaConfig, tok);
-}
-else if(Bun.argv[2] == "deepseek"){
-  let deepseekConfig = new DeepseekConfig()
-  model = new Deepseek(deepseekConfig, tok)
+} else if (Bun.argv[2] == "deepseek") {
+  let deepseekConfig = new DeepseekConfig();
+  model = new Deepseek(deepseekConfig, tok);
 }
 
-if(model!==undefined){
+if (model !== undefined) {
   let optim = new Adam(model.getParams());
-  
+
   if (Bun.argv[3] == "train") {
     train(model, tok, optim, docs);
     infere(model, tok);

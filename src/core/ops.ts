@@ -22,7 +22,7 @@ export function rmsnorm(x: Value[]): Value[] {
   return x.map((xi) => xi.mul(scale));
 }
 
-export function apply_rope(q_or_k: Value[], pos_id: number, head_dim: number){
+export function apply_rope(q_or_k: Value[], pos_id: number, head_dim: number) {
   const result: Value[] = [];
 
   for (let i = 0; i < head_dim; i += 2) {

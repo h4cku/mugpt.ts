@@ -38,20 +38,16 @@ export class Value {
   }
 
   silu(): Value {
-// SiLU / Swish: x * sigmoid(x)
+    // SiLU / Swish: x * sigmoid(x)
 
-  const sig = 1 / (1 + Math.exp(-this.data));
-  const outData = this.data * sig;
+    const sig = 1 / (1 + Math.exp(-this.data));
+    const outData = this.data * sig;
 
-  // derivative of x * sigmoid(x)
-  // = sig * (1 + x * (1 - sig))
-  const localGrad = sig * (1 + this.data * (1 - sig));
+    // derivative of x * sigmoid(x)
+    // = sig * (1 + x * (1 - sig))
+    const localGrad = sig * (1 + this.data * (1 - sig));
 
-  return new Value(
-    outData,
-    [this],
-    [localGrad]
-  );
+    return new Value(outData, [this], [localGrad]);
   }
 
   neg(): Value {
